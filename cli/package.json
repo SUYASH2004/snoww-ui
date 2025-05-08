@@ -1,0 +1,20 @@
+{
+    "name": "create-snoww-ui",
+    "version": "1.0.0",
+    "description": "CLI to install and setup Snow UI",
+    "bin": {
+        "create-snow-ui": "./bin/index.js"
+    },
+    "type": "module",
+    "keywords": [
+        "snow-ui",
+        "cli",
+        "ui-kit",
+        "react"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+        "snow-ui": "file:.."
+    }
+}

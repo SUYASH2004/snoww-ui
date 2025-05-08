@@ -1,0 +1,131 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f8f9fa; 
+  color: #2c3e50; 
+}
+
+
+a {
+  text-decoration: none;
+  color: #2c3e50; 
+}
+
+
+button {
+  background-color: #b0d7f5; 
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  color: #2c3e50; 
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #3a506b; 
+  color: white;
+}
+
+
+section {
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0; 
+} 
+
+
+/* Snow Theme */
+.snow-theme {
+  background-color: #F0F8FF;  /* light snow-like background */
+  border-radius: 0.5rem; /* rounded corners */
+  border: 1px solid #D3D3D3; /* subtle border */
+}
+
+/* Dropdown Styling */
+.dropdown-button {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #4B2E2B;
+  color: white;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-button:hover {
+  background-color: #3C241F;
+}
+
+.dropdown-menu {
+  position: absolute;
+  width: 100%;
+  background-color: #F5ECE4;
+  border: 1px solid #D7C2B4;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-top: 10px;
+}
+
+.dropdown-menu-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-menu-item:hover {
+  background-color: #EADFD3;
+  color: #4B2E2B;
+}
+
+.dropdown-menu-item:first-child {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.dropdown-menu-item:last-child {
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+:root {
+  --snoww-primary: #b0d7f5;
+  --snoww-primary-dark: #3a506b;
+  --snoww-light: #F0F8FF;
+  --snoww-bg: #f9fbff;
+  --snoww-accent: #e8f0f9;
+  --snoww-border: #e0e9f5;
+  --snoww-text: #2c3e50;
+  --snoww-text-light: #3a506b;
+}
+
+.snoww-card {
+  background-color: var(--snoww-bg);
+  border-radius: 1rem;
+  border: 1px solid var(--snoww-border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.snoww-card:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.frost-effect {
+  position: absolute;
+  background-color: var(--snoww-accent);
+  opacity: 0.5;
+  border-radius: 100%;
+  filter: blur(15px);
+}
+

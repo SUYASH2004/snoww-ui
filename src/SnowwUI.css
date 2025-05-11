@@ -1,0 +1,200 @@
+/* SnowwUI Global Styles */
+:root {
+  --snoww-primary: #8ecae6;
+  --snoww-primary-hover: #b0d7f5;
+  --snoww-primary-dark: #3a506b;
+  --snoww-light: #f0f8ff;
+  --snoww-bg: #f8f9fa;
+  --snoww-accent: #e8f0f9;
+  --snoww-border: #e0e9f5;
+  --snoww-text: #2c3e50;
+  --snoww-text-light: #3a506b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background-color: var(--snoww-bg);
+  color: var(--snoww-text);
+  overflow-x: hidden;
+}
+
+.snoww-ui-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.snoww-ui-content {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding-top: 80px; /* Add padding to account for the fixed navbar */
+}
+
+/* Global snowflake animations */
+.snowflake {
+  position: absolute;
+  color: white;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+  animation: snowfall linear infinite, sway 3s ease-in-out infinite alternate;
+  animation-duration: 15s;
+}
+
+@keyframes snowfall {
+  0% {
+    top: -10px;
+  }
+  100% {
+    top: 100vh;
+  }
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(5px);
+  }
+}
+
+/* Frost effect overlays */
+.frost-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
+  backdrop-filter: blur(5px);
+  z-index: -1;
+  border-radius: inherit;
+}
+
+/* Component Connection Styles - REMOVED LINE BETWEEN SECTIONS */
+section {
+  position: relative;
+  padding: 4rem 1rem;
+  overflow: hidden;
+  border: none !important;
+}
+
+/* Sticky navbar styles */
+.navbar-container {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Mobile menu styles */
+@media (max-width: 768px) {
+  .navbar-container.open {
+    background-color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Transitional elements */
+.frost-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Frost UI card enhancements */
+.snoww-card {
+  position: relative;
+  overflow: hidden;
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.snoww-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.snoww-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.snoww-card:hover::before {
+  opacity: 1;
+}
+
+/* Animation for page elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Button styles */
+.snoww-button {
+  background-color: var(--snoww-primary);
+  color: var(--snoww-text);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.snoww-button:hover {
+  background-color: var(--snoww-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(142, 202, 230, 0.3);
+}
+
+.snoww-button-outline {
+  background-color: transparent;
+  color: var(--snoww-text);
+  border: 2px solid var(--snoww-primary);
+}
+
+.snoww-button-outline:hover {
+  background-color: var(--snoww-light);
+  border-color: var(--snoww-primary-hover);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .snoww-ui-content {
+    padding-top: 70px; /* Slightly smaller padding on mobile */
+  }
+  
+  section {
+    padding: 3rem 1rem;
+  }
+}

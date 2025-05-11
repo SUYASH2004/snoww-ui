@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 
-const InputPreviewCard = ({ title, children, codeSnippet, description }) => {
+const SidebarPreviewCard = ({ title, children, codeSnippet, description }) => {
   const [activeTab, setActiveTab] = useState("preview")
   const [isExpanded, setIsExpanded] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
@@ -79,7 +79,11 @@ const InputPreviewCard = ({ title, children, codeSnippet, description }) => {
       {/* Content */}
       <div className="p-6">
         {activeTab === "preview" ? (
-          <div className="flex justify-center">{children}</div>
+          <div className="flex justify-center">
+            <div className="flex h-[400px] w-full border border-[#e5ded4] rounded-lg overflow-hidden">
+              {children}
+            </div>
+          </div>
         ) : (
           <div className="relative">
             <div className="absolute right-2 top-2 flex gap-2">
@@ -147,4 +151,4 @@ const InputPreviewCard = ({ title, children, codeSnippet, description }) => {
   )
 }
 
-export default InputPreviewCard
+export default SidebarPreviewCard

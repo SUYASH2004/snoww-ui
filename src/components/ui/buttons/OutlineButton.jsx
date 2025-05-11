@@ -1,10 +1,10 @@
 "use client"
 
-const OutlineButton = ({ children, onClick }) => {
+const OutlineButton = ({ children, onClick, className = "" }) => {
   return (
     <button
       onClick={onClick}
-      className="border border-blue-600 text-blue-600 px-4 py-2 rounded hover:bg-blue-50 transition"
+      className={`border-2 border-[#3498db] text-[#3498db] px-8 py-2 rounded-md hover:bg-[#ebf5fb] transition-all duration-300 transform hover:-translate-y-1 ${className}`}
     >
       {children || "Outline Button"}
     </button>

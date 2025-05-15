@@ -15,7 +15,7 @@ const DropdownPreviewCard = ({ title, children, codeSnippet, description }) => {
   }
 
   return (
-    <div className="bg-[var(--snoww-bg)] border border-[var(--snoww-border)] rounded-lg overflow-visible shadow-sm font-[Quicksand,sans-serif] snoww-card mb-8">
+    <div className="bg-[var(--snoww-bg)] border border-[var(--snoww-border)] rounded-lg overflow-visible shadow-sm font-[Quicksand,sans-serif] snoww-card mb-8 preview-card">
       {/* Header */}
       <div className="flex justify-between items-center p-4 border-b border-[var(--snoww-border)]">
         <h2 className="text-[var(--snoww-text)] text-xl font-bold">{title}</h2>
@@ -28,7 +28,7 @@ const DropdownPreviewCard = ({ title, children, codeSnippet, description }) => {
       )}
 
       {/* Tabs */}
-      <div className="flex border-b border-[var(--snoww-border)]">
+      <div className="flex border-b border-[var(--snoww-border)] preview-card-tabs">
         <button
           className={`flex items-center px-6 py-3 text-sm font-medium cursor-pointer ${
             activeTab === "preview" ? "border-b-2 border-[var(--snoww-primary)] text-[var(--snoww-text)]" : "text-[var(--snoww-text-light)]"
@@ -84,10 +84,12 @@ const DropdownPreviewCard = ({ title, children, codeSnippet, description }) => {
       {/* Content */}
       <div className="p-6 relative" style={{ minHeight: "100px" }}>
         {activeTab === "preview" ? (
-          <div className="flex justify-center">{children}</div>
+          <div className="flex justify-center preview-card-content">
+            {children}
+          </div>
         ) : (
           <div className="relative">
-            <div className="absolute right-2 top-2 flex gap-2">
+            <div className="absolute right-2 top-2 flex gap-2 z-50">
               <button
                 onClick={copyToClipboard}
                 className="p-1.5 rounded-md bg-[var(--snoww-light)] hover:bg-[var(--snoww-accent)] text-[var(--snoww-text)] transition-colors"

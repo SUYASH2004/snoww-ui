@@ -1,36 +1,24 @@
-import React, { useRef, useState } from 'react';
+"use client"
 
-/**
- * SpotlightCard component
- * 
- * A card component that creates a spotlight effect following the mouse cursor
- * 
- * @param {ReactNode} children - Content to display inside the card
- * @param {string} color - Color of the spotlight gradient (default: rgba(255, 255, 255, 0.1))
- * @param {number} size - Size of the spotlight in pixels (default: 300)
- * @param {string} className - Additional CSS classes to apply to the inner card
- */
-const SpotlightCard = ({ 
-  children, 
-  color = 'rgba(255, 255, 255, 0.1)', 
-  size = 300,
-  className = ''
-}) => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const cardRef = useRef(null);
+import { useRef, useState } from "react"
+
+const SpotlightCard = ({ children, color = "rgba(255, 255, 255, 0.1)", size = 300, className = "" }) => {
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [isHovering, setIsHovering] = useState(false)
+  const cardRef = useRef(null)
 
   const handleMouseMove = (e) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
+    if (!cardRef.current) return
+
+    const rect = cardRef.current.getBoundingClientRect()
     setPosition({
       x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-  };
+      y: e.clientY - rect.top,
+    })
+  }
 
-  const handleMouseEnter = () => setIsHovering(true);
-  const handleMouseLeave = () => setIsHovering(false);
+  const handleMouseEnter = () => setIsHovering(true)
+  const handleMouseLeave = () => setIsHovering(false)
 
   return (
     <div className="rounded-3xl border border-neutral-950/10 dark:border-white/10 bg-white/[.012] p-2">
@@ -40,26 +28,32 @@ const SpotlightCard = ({
         onMouseMove={handleMouseMove}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        style={{
-          '--x': `${position.x}px`,
-          '--y': `${position.y}px`,
-          '--spotlight-color-stops': `${color}, transparent`,
-          '--spotlight-size': `${size}px`
-        }}
       >
         <div
           className="absolute inset-0 transition-opacity duration-300 pointer-events-none"
           style={{
             opacity: isHovering ? 1 : 0,
-            backgroundImage: `radial-gradient(var(--spotlight-size) circle at var(--x) var(--y), var(--spotlight-color-stops))`
+            backgroundImage: `radial-gradient(${size}px circle at ${position.x}px ${position.y}px, ${color}, transparent)`,
+            zIndex: 1, // Set a low z-index for the spotlight effect
           }}
         />
-        <div className="relative z-10">
-          {children}
+
+        <div className="relative spotlight-card-content" style={{ zIndex: 30 }}>
+          {children || (
+            <div className="p-6">
+              <h3 className="text-xl font-bold text-[#2c3e50]">Spotlight Card</h3>
+              <button
+                className="mt-4 px-4 py-2 bg-[#8ecae6] text-[#2c3e50] rounded-lg hover:bg-[#b0d7f5] focus:ring-2 focus:ring-[#64b5e6] focus:outline-none transition-all duration-300"
+                style={{ position: "relative", zIndex: 40 }}
+              >
+                Test Button
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SpotlightCard;
+export default SpotlightCard

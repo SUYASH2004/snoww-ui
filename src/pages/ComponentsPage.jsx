@@ -271,8 +271,8 @@ const SearchInput = ({ placeholder = "Search...", onSearch }) => {
   </button>
 </div>`;
 
-  const snowwCardCode = `<div className="snoww-card frost-glide bg-[var(--snoww-bg)]/70 border border-[var(--snoww-border)] p-6 text-[var(--snoww-text)] hover:shadow-xl transition-all duration-300 relative overflow-hidden rounded-xl backdrop-blur-md">
-  <div className="absolute -top-10 -left-10 w-32 h-32 bg-[var(--snoww-accent)] opacity-30 rounded-full blur-2xl"></div>
+  const snowwCardCode = `<div className="snoww-card frost-glide bg-[#f9fbff]/70 border border-[#e8f0f9] p-6 text-[#2c3e50] hover:shadow-xl transition-all duration-300 relative overflow-hidden rounded-xl backdrop-blur-md">
+  <div className="absolute -top-10 -left-10 w-32 h-32 bg-[#e8f0f9] opacity-30 rounded-full blur-2xl"></div>
   
   <div className="relative z-10">
     <h3 className="text-xl font-bold mb-2">Card Title</h3>
@@ -280,8 +280,8 @@ const SearchInput = ({ placeholder = "Search...", onSearch }) => {
   </div>
 </div>`;
 
-  const profileCardCode = `<div className="snoww-card bg-[var(--snoww-bg)] border border-[var(--snoww-border)] p-6 text-center relative overflow-hidden">
-  <div className="absolute -top-16 -right-16 w-32 h-32 bg-[var(--snoww-accent)] opacity-50 rounded-full blur-xl"></div>
+  const profileCardCode = `<div className="snoww-card bg-gradient-to-b from-[#f9fbff] to-[#e8f0f9] border border-[#e0e9f5] p-6 text-center relative overflow-hidden">
+  <div className="absolute -top-16 -right-16 w-32 h-32 bg-[#d8e8f7] opacity-50 rounded-full blur-xl"></div>
   
   <div className="relative z-10">
     <div className="relative mx-auto w-24 h-24 mb-4">

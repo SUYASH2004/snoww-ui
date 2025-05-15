@@ -14,7 +14,7 @@ const HeroPreviewCard = ({ title, children, codeSnippet, description }) => {
   }
 
   return (
-    <div className="bg-[#fbf9f7] border border-[#e5ded4] rounded-lg overflow-hidden shadow-sm font-sans snoww-card mb-6">
+    <div className="bg-[#fbf9f7] border border-[#e5ded4] rounded-lg overflow-hidden shadow-sm font-sans snoww-card mb-6 preview-card">
       {/* Header */}
       <div className="flex justify-between items-center p-4 border-b border-[#e5ded4]">
         <h2 className="text-[#2c3e50] text-xl font-bold">{title}</h2>
@@ -27,7 +27,7 @@ const HeroPreviewCard = ({ title, children, codeSnippet, description }) => {
       )}
 
       {/* Tabs */}
-      <div className="flex border-b border-[#e5ded4]">
+      <div className="flex border-b border-[#e5ded4] preview-card-tabs">
         <button
           className={`flex items-center px-6 py-3 text-sm font-medium ${activeTab === "preview" ? "border-b-2 border-[#2c3e50]" : ""}`}
           onClick={() => setActiveTab("preview")}
@@ -79,14 +79,14 @@ const HeroPreviewCard = ({ title, children, codeSnippet, description }) => {
       {/* Content */}
       <div className="p-6">
         {activeTab === "preview" ? (
-          <div className="flex justify-center w-full">
+          <div className="flex justify-center w-full preview-card-content">
             <div className="w-full max-w-4xl border border-[#e5ded4] rounded-lg overflow-hidden">
               {children}
             </div>
           </div>
         ) : (
           <div className="relative">
-            <div className="absolute right-2 top-2 flex gap-2">
+            <div className="absolute right-2 top-2 flex gap-2 z-50">
               <button
                 onClick={copyToClipboard}
                 className="p-1.5 rounded-md bg-[#f0f4f8] hover:bg-[#e0e8f0] text-[#2c3e50] transition-colors"

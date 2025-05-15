@@ -57,7 +57,7 @@ const CardPreviewCard = ({ title, children, codeSnippet, description }) => {
           </div>
         ) : (
           <div className="relative">
-            <div className="absolute right-2 top-2 flex gap-2">
+            <div className="absolute right-2 top-2 flex gap-2 z-30">
               <button
                 onClick={copyToClipboard}
                 className="p-1.5 rounded-md bg-[#f0f4f8] hover:bg-[#e0e8f0] text-[#2c3e50] transition-colors"

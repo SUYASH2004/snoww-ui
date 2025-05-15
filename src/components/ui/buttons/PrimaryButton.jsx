@@ -1,11 +1,15 @@
-"use client"
+// PrimaryButton.jsx
+import React from 'react';
 
-const PrimaryButton = ({ children, onClick }) => {
+const PrimaryButton = ({ children, ...props }) => {
   return (
-    <button onClick={onClick} className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
-      {children || "Primary Button"}
+    <button
+      className="bg-gradient-to-r from-[#3498db] to-[#2980b9] text-white px-8 py-2 rounded-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 relative z-10"
+      {...props}
+    >
+      {children}
     </button>
-  )
-}
+  );
+};
 
-export default PrimaryButton
+export default PrimaryButton;

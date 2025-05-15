@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from "react"
@@ -14,22 +15,24 @@ const DropdownPreviewCard = ({ title, children, codeSnippet, description }) => {
   }
 
   return (
-    <div className="bg-[#fbf9f7] border border-[#e5ded4] rounded-lg overflow-visible shadow-sm font-sans snoww-card mb-8">
+    <div className="bg-[var(--snoww-bg)] border border-[var(--snoww-border)] rounded-lg overflow-visible shadow-sm font-[Quicksand,sans-serif] snoww-card mb-8">
       {/* Header */}
-      <div className="flex justify-between items-center p-4 border-b border-[#e5ded4]">
-        <h2 className="text-[#2c3e50] text-xl font-bold">{title}</h2>
+      <div className="flex justify-between items-center p-4 border-b border-[var(--snoww-border)]">
+        <h2 className="text-[var(--snoww-text)] text-xl font-bold">{title}</h2>
       </div>
 
       {description && (
-        <div className="p-4 border-b border-[#e5ded4] text-[#3a506b]">
+        <div className="p-4 border-b border-[var(--snoww-border)] text-[var(--snoww-text-light)]">
           <p>{description}</p>
         </div>
       )}
 
       {/* Tabs */}
-      <div className="flex border-b border-[#e5ded4]">
+      <div className="flex border-b border-[var(--snoww-border)]">
         <button
-          className={`flex items-center px-6 py-3 text-sm font-medium ${activeTab === "preview" ? "border-b-2 border-[#2c3e50]" : ""}`}
+          className={`flex items-center px-6 py-3 text-sm font-medium cursor-pointer ${
+            activeTab === "preview" ? "border-b-2 border-[var(--snoww-primary)] text-[var(--snoww-text)]" : "text-[var(--snoww-text-light)]"
+          }`}
           onClick={() => setActiveTab("preview")}
         >
           <svg
@@ -55,7 +58,9 @@ const DropdownPreviewCard = ({ title, children, codeSnippet, description }) => {
           Preview
         </button>
         <button
-          className={`flex items-center px-6 py-3 text-sm font-medium ${activeTab === "code" ? "border-b-2 border-[#2c3e50]" : ""}`}
+          className={`flex items-center px-6 py-3 text-sm font-medium cursor-pointer ${
+            activeTab === "code" ? "border-b-2 border-[var(--snoww-primary)] text-[var(--snoww-text)]" : "text-[var(--snoww-text-light)]"
+          }`}
           onClick={() => setActiveTab("code")}
         >
           <svg
@@ -85,7 +90,7 @@ const DropdownPreviewCard = ({ title, children, codeSnippet, description }) => {
             <div className="absolute right-2 top-2 flex gap-2">
               <button
                 onClick={copyToClipboard}
-                className="p-1.5 rounded-md bg-[#f0f4f8] hover:bg-[#e0e8f0] text-[#2c3e50] transition-colors"
+                className="p-1.5 rounded-md bg-[var(--snoww-light)] hover:bg-[var(--snoww-accent)] text-[var(--snoww-text)] transition-colors"
                 title="Copy code"
               >
                 {isCopied ? (
@@ -109,7 +114,7 @@ const DropdownPreviewCard = ({ title, children, codeSnippet, description }) => {
               </button>
               <button
                 onClick={() => setIsExpanded(!isExpanded)}
-                className="p-1.5 rounded-md bg-[#f0f4f8] hover:bg-[#e0e8f0] text-[#2c3e50] transition-colors"
+                className="p-1.5 rounded-md bg-[var(--snoww-light)] hover:bg-[var(--snoww-accent)] text-[var(--snoww-text)] transition-colors"
                 title={isExpanded ? "Collapse" : "Expand"}
               >
                 {isExpanded ? (
@@ -136,7 +141,9 @@ const DropdownPreviewCard = ({ title, children, codeSnippet, description }) => {
               </button>
             </div>
             <pre
-              className={`bg-[#f5f7f9] p-4 rounded-lg overflow-x-auto text-sm text-[#2c3e50] font-mono ${isExpanded ? "max-h-[800px]" : "max-h-[300px]"} transition-all duration-300`}
+              className={`bg-[var(--snoww-light)] p-4 rounded-lg overflow-x-auto text-sm text-[var(--snoww-text)] font-mono ${
+                isExpanded ? "max-h-[800px]" : "max-h-[300px]"
+              } transition-all duration-300`}
             >
               {codeSnippet}
             </pre>

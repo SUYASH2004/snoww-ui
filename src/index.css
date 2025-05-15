@@ -2,76 +2,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
+:root {
+  --snoww-primary: #8ecae6;
+  --snoww-primary-hover: #b0d7f5;
+  --snoww-primary-dark: #3a506b;
+  --snoww-light: #f0f8ff;
+  --snoww-bg: #f8f9fa;
+  --snoww-accent: #e8f0f9;
+  --snoww-border: #e0e9f5;
+  --snoww-text: #2c3e50;
+  --snoww-text-light: #3a506b;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
-  background-color: #f8f9fa; 
-  color: #2c3e50; 
+  background-color: var(--snoww-bg);
+  color: var(--snoww-text);
 }
-
 
 a {
   text-decoration: none;
-  color: #2c3e50; 
+  color: var(--snoww-text);
 }
 
-
 button {
-  background-color: #b0d7f5; 
+  background-color: var(--snoww-primary);
   border: none;
   border-radius: 6px;
   padding: 10px 20px;
-  color: #2c3e50; 
+  color: var(--snoww-text);
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 600;
   margin: 10px;
+  font-family: 'Quicksand', sans-serif;
 }
 
 button:hover {
-  background-color: #3a506b; 
-  color: white;
+  background-color: var(--snoww-primary-hover);
+  color: var(--snoww-text);
 }
-
 
 section {
   padding: 60px 20px;
   text-align: center;
-  border-top: 1px solid #e0e0e0; 
-} 
-
+  border-top: 1px solid var(--snoww-border);
+}
 
 /* Snow Theme */
 .snow-theme {
-  background-color: #F0F8FF;  /* light snow-like background */
-  border-radius: 0.5rem; /* rounded corners */
-  border: 1px solid #D3D3D3; /* subtle border */
+  background-color: var(--snoww-light);
+  border-radius: 0.5rem;
+  border: 1px solid var(--snoww-border);
 }
 
 /* Dropdown Styling */
 .dropdown-button {
   width: 100%;
   padding: 12px 20px;
-  background-color: #4B2E2B;
-  color: white;
+  background-color: var(--snoww-primary-dark);
+  color: var(--snoww-light);
   border-radius: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .dropdown-button:hover {
-  background-color: #3C241F;
+  background-color: var(--snoww-primary);
 }
 
 .dropdown-menu {
   position: absolute;
   width: 100%;
-  background-color: #F5ECE4;
-  border: 1px solid #D7C2B4;
+  background-color: var(--snoww-light);
+  border: 1px solid var(--snoww-border);
   border-radius: 0.5rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 10;
@@ -82,11 +92,12 @@ section {
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .dropdown-menu-item:hover {
-  background-color: #EADFD3;
-  color: #4B2E2B;
+  background-color: var(--snoww-accent);
+  color: var(--snoww-text);
 }
 
 .dropdown-menu-item:first-child {
@@ -96,16 +107,6 @@ section {
 .dropdown-menu-item:last-child {
   border-radius: 0 0 0.5rem 0.5rem;
 }
-:root {
-  --snoww-primary: #b0d7f5;
-  --snoww-primary-dark: #3a506b;
-  --snoww-light: #F0F8FF;
-  --snoww-bg: #f9fbff;
-  --snoww-accent: #e8f0f9;
-  --snoww-border: #e0e9f5;
-  --snoww-text: #2c3e50;
-  --snoww-text-light: #3a506b;
-}
 
 .snoww-card {
   background-color: var(--snoww-bg);
@@ -114,6 +115,7 @@ section {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease-in-out;
   overflow: hidden;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .snoww-card:hover {
@@ -128,5 +130,3 @@ section {
   border-radius: 100%;
   filter: blur(15px);
 }
-
-

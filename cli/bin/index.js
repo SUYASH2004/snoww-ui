@@ -1,45 +1,39 @@
 #!/usr/bin/env node
 
-import { execSync } from "child_process";
-import fs from "fs";
-import path from "path";
+import { Command } from 'commander';
+import fs from 'fs-extra';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
-// ES module fix
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const program = new Command();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-console.log("🌨️  Installing Snoww UI into your project...");
+// Component source directory
+const COMPONENTS_SRC = path.join(__dirname, '../components/ui');
 
-try {
-  // Install snow-ui
-  execSync('npm install ../', { stdio: 'inherit' });
+program
+  .command('add <component>')
+  .description('Add a SNOWW-UI component folder to your project')
+  .action(async (component) => {
+    const sourceFolder = path.join(COMPONENTS_SRC, component);
+    const destFolder = path.join(process.cwd(), 'components', 'ui', component);
 
-  // Modify index.css or global.css
-  const cssPaths = [
-    path.resolve("src", "index.css"),
-    path.resolve("src", "global.css")
-  ];
-
-  let cssUpdated = false;
-  for (const cssPath of cssPaths) {
-    if (fs.existsSync(cssPath)) {
-      const content = fs.readFileSync(cssPath, "utf8");
-      if (!content.includes("@import \"snow-ui")) {
-        fs.appendFileSync(cssPath, '\n@import "snow-ui/dist/snow-theme.css";');
-        fs.appendFileSync(cssPath, '\n@import "snow-ui/dist/esm/index.css";');
-        cssUpdated = true;
-        console.log(`✅ CSS imports added to ${path.basename(cssPath)}`);
-        break;
-      }
+    if (!fs.existsSync(sourceFolder)) {
+      console.error(`❌ Component folder "${component}" not found in SNOWW-UI.`);
+      process.exit(1);
     }
-  }
 
-  if (!cssUpdated) {
-    console.warn("⚠️ No index.css or global.css found. Please import Snow UI styles manually.");
-  }
+    if (fs.existsSync(destFolder)) {
+      console.warn(`⚠️ Component "${component}" already exists in your project.`);
+      process.exit(1);
+    }
 
-  console.log("🎉 Snow UI installed successfully!");
-} catch (err) {
-  console.error("❌ Installation failed:", err);
-}
+    try {
+      await fs.copy(sourceFolder, destFolder);
+      console.log(`✅ Successfully added "${component}" to your project under ./components/ui/${component}/`);
+    } catch (err) {
+      console.error(`❌ Error copying component:`, err);
+    }
+  });
+
+program.parse(process.argv);
